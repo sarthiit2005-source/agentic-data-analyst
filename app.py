@@ -22,6 +22,9 @@ with st.sidebar:
     st.header("Connection")
     key = st.text_input("Your API key", type="password")
     model = st.text_input("Tool-calling model", value=os.getenv("LLM_MODEL", ""))
+    api_mode_label = st.selectbox("API mode", ["Auto", "Responses", "Chat Completions"])
+    api_mode = {"Auto": "auto", "Responses": "responses",
+                "Chat Completions": "chat_completions"}[api_mode_label]
     endpoint = os.getenv("LLM_BASE_URL", "https://api.openai.com/v1")
     st.caption(f"Provider endpoint: {endpoint}")
     st.caption("Bring your own key. It is kept only in this browser session. Each question is limited to 12 model steps and 32 tool calls.")
@@ -64,7 +67,7 @@ if files:
                             placeholder="Which region has the lowest total revenue?")
     if st.button("Analyze", type="primary", disabled=not (key and model and question.strip())):
         try:
-            client = APIClient(api_key=key, model=model, base_url=endpoint)
+            client = APIClient(api_key=key, model=model, base_url=endpoint, api_mode=api_mode)
             analysis = Analysis(st.session_state.tables, st.session_state.directory.name, st.session_state.schema)
             with st.status("Analyzing your dataset…", expanded=True) as status:
                 def show_event(event):

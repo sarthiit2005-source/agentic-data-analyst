@@ -73,9 +73,10 @@ class Agent:
                     or not isinstance(c["function"].get("name"), str) for c in calls
                 ) or len({c["id"] for c in calls}) != len(calls):
                     raise ValueError("Malformed tool calls from provider")
-            except Exception:
+            except Exception as error:
                 run.status = "api_error"
-                run.answer = "The LLM request failed. Check credentials, provider availability, model support, and quota."
+                detail = str(error)[:600] or type(error).__name__
+                run.answer = f"The LLM request failed: {detail}"
                 break
             run.usage_complete &= "prompt_tokens" in usage and "completion_tokens" in usage
             run.input_tokens += usage.get("prompt_tokens", 0)

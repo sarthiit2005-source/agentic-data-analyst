@@ -86,6 +86,45 @@ def test_http_client_preserves_wire_format():
     assert usage["completion_tokens"] == 3
 
 
+def test_responses_api_tool_call_and_history_translation():
+    seen = []
+    def handler(request):
+        payload = json.loads(request.content)
+        seen.append((request.url.path, payload))
+        return httpx.Response(200, json={
+            "output": [{"type": "function_call", "call_id": "fc_1",
+                        "name": "inspect_dataset", "arguments": "{}"}],
+            "usage": {"input_tokens": 7, "output_tokens": 3}})
+    client = APIClient("not-real", "gpt-5.6-sol", transport=httpx.MockTransport(handler))
+    message, usage = client.chat([
+        {"role": "system", "content": "Analyze."},
+        {"role": "assistant", "content": None, "tool_calls": [{
+            "id": "old", "type": "function",
+            "function": {"name": "inspect_dataset", "arguments": "{}"}}]},
+        {"role": "tool", "tool_call_id": "old", "content": "{\"ok\":true}"}],
+        [{"type": "function", "function": {"name": "inspect_dataset",
+                                               "description": "Inspect", "parameters": {"type": "object"}}}])
+    assert seen[0][0].endswith("/responses")
+    assert seen[0][1]["tools"][0]["name"] == "inspect_dataset"
+    assert any(item.get("type") == "function_call_output" for item in seen[0][1]["input"])
+    assert message["tool_calls"][0]["function"]["name"] == "inspect_dataset"
+    assert usage == {"prompt_tokens": 7, "completion_tokens": 3}
+
+
+def test_provider_error_message_is_preserved_without_key():
+    def handler(request):
+        return httpx.Response(400, json={"error": {"message": "Use max_output_tokens",
+                                                    "code": "unsupported_parameter"}})
+    client = APIClient("secret-key", "gpt-4.1", transport=httpx.MockTransport(handler))
+    try:
+        client.chat([], [])
+        assert False, "Expected an API error"
+    except RuntimeError as error:
+        assert "unsupported_parameter" in str(error)
+        assert "Use max_output_tokens" in str(error)
+        assert "secret-key" not in str(error)
+
+
 def test_followup_keeps_prior_evidence(tmp_path):
     client = ScriptedClient([
         call("run_sql", {"query": "SELECT SUM(sales) AS total FROM data"}),
