@@ -1,0 +1,13 @@
+region,quarter,revenue,units
+North,1,100,10
+North,2,120,10
+North,3,80,10
+North,4,110,10
+South,1,90,8
+South,2,100,8
+South,3,95,8
+South,4,105,8
+West,1,80,7
+West,2,110,7
+West,3,70,7
+West,4,100,7

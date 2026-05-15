@@ -1,0 +1,586 @@
+[
+  {
+    "id": "T01",
+    "dataset": "data/sales.csv",
+    "category": "numeric",
+    "question": "What is the sum of revenue across all sales rows?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT sum(revenue) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 1160.0
+  },
+  {
+    "id": "T02",
+    "dataset": "data/sales.csv",
+    "category": "numeric",
+    "question": "What is the avg of revenue across all sales rows?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT avg(revenue) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 96.66666666666667
+  },
+  {
+    "id": "T03",
+    "dataset": "data/sales.csv",
+    "category": "numeric",
+    "question": "What is the min of revenue across all sales rows?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT min(revenue) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 70.0
+  },
+  {
+    "id": "T04",
+    "dataset": "data/sales.csv",
+    "category": "numeric",
+    "question": "What is the max of revenue across all sales rows?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT max(revenue) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 120.0
+  },
+  {
+    "id": "T05",
+    "dataset": "data/sales.csv",
+    "category": "numeric",
+    "question": "What is the sum of units across all sales rows?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT sum(units) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 100.0
+  },
+  {
+    "id": "T06",
+    "dataset": "data/sales.csv",
+    "category": "numeric",
+    "question": "What is the avg of units across all sales rows?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT avg(units) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 8.333333333333334
+  },
+  {
+    "id": "T07",
+    "dataset": "data/sales.csv",
+    "category": "numeric",
+    "question": "What is the min of units across all sales rows?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT min(units) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 7.0
+  },
+  {
+    "id": "T08",
+    "dataset": "data/sales.csv",
+    "category": "numeric",
+    "question": "What is the max of units across all sales rows?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT max(units) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 10.0
+  },
+  {
+    "id": "T09",
+    "dataset": "data/sales.csv",
+    "category": "aggregation",
+    "question": "What is total revenue for North?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT SUM(revenue) AS answer FROM data WHERE region='North'"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 410.0
+  },
+  {
+    "id": "T10",
+    "dataset": "data/sales.csv",
+    "category": "aggregation",
+    "question": "What is total revenue for South?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT SUM(revenue) AS answer FROM data WHERE region='South'"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 390.0
+  },
+  {
+    "id": "T11",
+    "dataset": "data/sales.csv",
+    "category": "aggregation",
+    "question": "What is total revenue for West?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT SUM(revenue) AS answer FROM data WHERE region='West'"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 360.0
+  },
+  {
+    "id": "T12",
+    "dataset": "data/sales.csv",
+    "category": "filtering",
+    "question": "What is total revenue in quarter 1?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT SUM(revenue) AS answer FROM data WHERE quarter=1"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 270.0
+  },
+  {
+    "id": "T13",
+    "dataset": "data/sales.csv",
+    "category": "filtering",
+    "question": "What is total revenue in quarter 2?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT SUM(revenue) AS answer FROM data WHERE quarter=2"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 330.0
+  },
+  {
+    "id": "T14",
+    "dataset": "data/sales.csv",
+    "category": "filtering",
+    "question": "What is total revenue in quarter 3?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT SUM(revenue) AS answer FROM data WHERE quarter=3"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 245.0
+  },
+  {
+    "id": "T15",
+    "dataset": "data/sales.csv",
+    "category": "filtering",
+    "question": "What is total revenue in quarter 4?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT SUM(revenue) AS answer FROM data WHERE quarter=4"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 315.0
+  },
+  {
+    "id": "T16",
+    "dataset": "data/sales.csv",
+    "category": "multi_step",
+    "question": "For North, calculate the percentage change in revenue from quarter 2 to quarter 3.",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT 100.0*(SUM(CASE WHEN quarter=3 THEN revenue ELSE 0 END)-SUM(CASE WHEN quarter=2 THEN revenue ELSE 0 END))/SUM(CASE WHEN quarter=2 THEN revenue ELSE 0 END) AS answer FROM data WHERE region='North'"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": -33.33333333333333
+  },
+  {
+    "id": "T17",
+    "dataset": "data/sales.csv",
+    "category": "multi_step",
+    "question": "For South, calculate the percentage change in revenue from quarter 2 to quarter 3.",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT 100.0*(SUM(CASE WHEN quarter=3 THEN revenue ELSE 0 END)-SUM(CASE WHEN quarter=2 THEN revenue ELSE 0 END))/SUM(CASE WHEN quarter=2 THEN revenue ELSE 0 END) AS answer FROM data WHERE region='South'"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": -5.0
+  },
+  {
+    "id": "T18",
+    "dataset": "data/sales.csv",
+    "category": "multi_step",
+    "question": "For West, calculate the percentage change in revenue from quarter 2 to quarter 3.",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT 100.0*(SUM(CASE WHEN quarter=3 THEN revenue ELSE 0 END)-SUM(CASE WHEN quarter=2 THEN revenue ELSE 0 END))/SUM(CASE WHEN quarter=2 THEN revenue ELSE 0 END) AS answer FROM data WHERE region='West'"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": -36.36363636363637
+  },
+  {
+    "id": "T19",
+    "dataset": "data/operations.csv",
+    "category": "missing_data",
+    "question": "What is avg duration, excluding missing values?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT avg(duration) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 4.8
+  },
+  {
+    "id": "T20",
+    "dataset": "data/operations.csv",
+    "category": "missing_data",
+    "question": "What is sum duration, excluding missing values?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT sum(duration) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 24.0
+  },
+  {
+    "id": "T21",
+    "dataset": "data/operations.csv",
+    "category": "missing_data",
+    "question": "What is min duration, excluding missing values?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT min(duration) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 2.0
+  },
+  {
+    "id": "T22",
+    "dataset": "data/operations.csv",
+    "category": "missing_data",
+    "question": "What is max duration, excluding missing values?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT max(duration) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 9.0
+  },
+  {
+    "id": "T23",
+    "dataset": "data/operations.csv",
+    "category": "missing_data",
+    "question": "How many durations are missing?",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT COUNT(*) AS answer FROM data WHERE duration IS NULL"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 1
+  },
+  {
+    "id": "T24",
+    "dataset": "data/experiments.csv",
+    "category": "statistics",
+    "question": "Report the two-sided Welch p-value comparing score between control and treatment.",
+    "oracle": {
+      "tool": "statistical_test",
+      "arguments": {
+        "test": "welch",
+        "x": "score",
+        "y": "group",
+        "group_a": "control",
+        "group_b": "treatment"
+      },
+      "path": [
+        "p_value"
+      ]
+    },
+    "expected": 1.8182666076229806e-05
+  },
+  {
+    "id": "T25",
+    "dataset": "data/experiments.csv",
+    "category": "statistics",
+    "question": "Report Pearson correlation r between score and hours.",
+    "oracle": {
+      "tool": "statistical_test",
+      "arguments": {
+        "test": "pearson",
+        "x": "score",
+        "y": "hours"
+      },
+      "path": [
+        "statistic"
+      ]
+    },
+    "expected": -0.07772749711335074
+  },
+  {
+    "id": "T26",
+    "dataset": "data/experiments.csv",
+    "category": "statistics",
+    "question": "Report chi-square p-value for group and passed, without continuity correction.",
+    "oracle": {
+      "tool": "statistical_test",
+      "arguments": {
+        "test": "chi_square",
+        "x": "group",
+        "y": "passed"
+      },
+      "path": [
+        "p_value"
+      ]
+    },
+    "expected": 0.09096894797535765
+  },
+  {
+    "id": "T27",
+    "dataset": "data/sales.csv",
+    "category": "chart",
+    "question": "Create a bar chart using x=region and y=revenue.",
+    "oracle": {
+      "tool": "create_chart",
+      "arguments": {
+        "kind": "bar",
+        "x": "region",
+        "y": "revenue"
+      },
+      "path": [
+        "chart_path"
+      ]
+    },
+    "expected": "file_exists"
+  },
+  {
+    "id": "T28",
+    "dataset": "data/operations.csv",
+    "category": "chart",
+    "question": "Create a histogram chart using x=duration.",
+    "oracle": {
+      "tool": "create_chart",
+      "arguments": {
+        "kind": "histogram",
+        "x": "duration"
+      },
+      "path": [
+        "chart_path"
+      ]
+    },
+    "expected": "file_exists"
+  },
+  {
+    "id": "T29",
+    "dataset": "data/experiments.csv",
+    "category": "chart",
+    "question": "Create a scatter chart using x=hours and y=score.",
+    "oracle": {
+      "tool": "create_chart",
+      "arguments": {
+        "kind": "scatter",
+        "x": "hours",
+        "y": "score"
+      },
+      "path": [
+        "chart_path"
+      ]
+    },
+    "expected": "file_exists"
+  },
+  {
+    "id": "T30",
+    "dataset": "data/sales.csv",
+    "category": "clarification",
+    "question": "Which region is best? Ask me which metric and quarter I mean before analyzing.",
+    "expected": "clarification"
+  },
+  {
+    "id": "T31",
+    "dataset": "data/operations.csv",
+    "category": "clarification",
+    "question": "Is performance good? Ask which measure and threshold I mean.",
+    "expected": "clarification"
+  },
+  {
+    "id": "T32",
+    "dataset": "data/sales.csv",
+    "category": "unanswerable",
+    "question": "What is total profit? The dataset contains no cost or profit. Explain why this cannot be calculated.",
+    "expected": "unanswerable"
+  },
+  {
+    "id": "T33",
+    "dataset": "data/operations.csv",
+    "category": "unanswerable",
+    "question": "What is the average salary? If absent, explain the data limitation.",
+    "expected": "unanswerable"
+  },
+  {
+    "id": "T34",
+    "dataset": "data/sales.csv",
+    "category": "unanswerable",
+    "question": "Prove that our advertising campaign caused the Q3 decline using only this dataset.",
+    "expected": "unanswerable"
+  },
+  {
+    "id": "T35",
+    "dataset": "data/experiments.csv",
+    "category": "unanswerable",
+    "question": "Train a classifier for passed.",
+    "expected": "unanswerable"
+  },
+  {
+    "id": "T36",
+    "dataset": "data/sales.csv",
+    "category": "recovery",
+    "question": "Inspect the dataset, then report total revenue. Retry any transient tool error.",
+    "oracle": {
+      "tool": "run_sql",
+      "arguments": {
+        "query": "SELECT SUM(revenue) AS answer FROM data"
+      },
+      "path": [
+        "rows",
+        0,
+        "answer"
+      ]
+    },
+    "expected": 1160.0,
+    "inject_error": true
+  }
+]

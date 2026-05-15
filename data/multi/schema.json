@@ -1,0 +1,25 @@
+{
+  "tables": {
+    "customers": {
+      "description": "One row per customer.",
+      "primary_key": ["customer_id"],
+      "columns": {
+        "customer_id": {"type": "string", "nullable": false},
+        "region": {"type": "string", "description": "Customer region"}
+      }
+    },
+    "orders": {
+      "description": "One row per order; revenue is in USD.",
+      "primary_key": ["order_id"],
+      "columns": {
+        "order_id": {"type": "integer", "nullable": false},
+        "customer_id": {"type": "string", "nullable": false},
+        "revenue": {"type": "number", "nullable": false}
+      }
+    }
+  },
+  "relationships": [
+    {"from": {"table": "orders", "column": "customer_id"},
+     "to": {"table": "customers", "column": "customer_id"}}
+  ]
+}

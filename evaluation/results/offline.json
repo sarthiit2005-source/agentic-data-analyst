@@ -1,0 +1,296 @@
+{
+  "created_at": "2026-10-20T07:01:16.418614+00:00",
+  "mode": "offline",
+  "system": "agent",
+  "model": null,
+  "task_count": 36,
+  "results": [
+    {
+      "id": "T01",
+      "category": "numeric",
+      "expected": 1160.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 1160
+    },
+    {
+      "id": "T02",
+      "category": "numeric",
+      "expected": 96.66666666666667,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 96.66666666666667
+    },
+    {
+      "id": "T03",
+      "category": "numeric",
+      "expected": 70.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 70
+    },
+    {
+      "id": "T04",
+      "category": "numeric",
+      "expected": 120.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 120
+    },
+    {
+      "id": "T05",
+      "category": "numeric",
+      "expected": 100.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 100
+    },
+    {
+      "id": "T06",
+      "category": "numeric",
+      "expected": 8.333333333333334,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 8.333333333333334
+    },
+    {
+      "id": "T07",
+      "category": "numeric",
+      "expected": 7.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 7
+    },
+    {
+      "id": "T08",
+      "category": "numeric",
+      "expected": 10.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 10
+    },
+    {
+      "id": "T09",
+      "category": "aggregation",
+      "expected": 410.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 410
+    },
+    {
+      "id": "T10",
+      "category": "aggregation",
+      "expected": 390.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 390
+    },
+    {
+      "id": "T11",
+      "category": "aggregation",
+      "expected": 360.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 360
+    },
+    {
+      "id": "T12",
+      "category": "filtering",
+      "expected": 270.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 270
+    },
+    {
+      "id": "T13",
+      "category": "filtering",
+      "expected": 330.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 330
+    },
+    {
+      "id": "T14",
+      "category": "filtering",
+      "expected": 245.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 245
+    },
+    {
+      "id": "T15",
+      "category": "filtering",
+      "expected": 315.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 315
+    },
+    {
+      "id": "T16",
+      "category": "multi_step",
+      "expected": -33.33333333333333,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": -33.333333333333336
+    },
+    {
+      "id": "T17",
+      "category": "multi_step",
+      "expected": -5.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": -5.0
+    },
+    {
+      "id": "T18",
+      "category": "multi_step",
+      "expected": -36.36363636363637,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": -36.36363636363637
+    },
+    {
+      "id": "T19",
+      "category": "missing_data",
+      "expected": 4.8,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 4.8
+    },
+    {
+      "id": "T20",
+      "category": "missing_data",
+      "expected": 24.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 24.0
+    },
+    {
+      "id": "T21",
+      "category": "missing_data",
+      "expected": 2.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 2.0
+    },
+    {
+      "id": "T22",
+      "category": "missing_data",
+      "expected": 9.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 9.0
+    },
+    {
+      "id": "T23",
+      "category": "missing_data",
+      "expected": 1,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "id": "T24",
+      "category": "statistics",
+      "expected": 1.8182666076229806e-05,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 1.8182666076229806e-05
+    },
+    {
+      "id": "T25",
+      "category": "statistics",
+      "expected": -0.07772749711335074,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": -0.07772749711335074
+    },
+    {
+      "id": "T26",
+      "category": "statistics",
+      "expected": 0.09096894797535765,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 0.09096894797535765
+    },
+    {
+      "id": "T27",
+      "category": "chart",
+      "expected": "file_exists",
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": "C:\\Users\\sarth\\Documents\\AI-data-analysis\\outputs\\benchmark\\T27\\chart-443986b1311c4ffeb2b8ffa727df143e.png"
+    },
+    {
+      "id": "T28",
+      "category": "chart",
+      "expected": "file_exists",
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": "C:\\Users\\sarth\\Documents\\AI-data-analysis\\outputs\\benchmark\\T28\\chart-558847f8fb524546817936353fb14f4c.png"
+    },
+    {
+      "id": "T29",
+      "category": "chart",
+      "expected": "file_exists",
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": "C:\\Users\\sarth\\Documents\\AI-data-analysis\\outputs\\benchmark\\T29\\chart-ce32cf235cd34e048266c81a99d01713.png"
+    },
+    {
+      "id": "T30",
+      "category": "clarification",
+      "expected": "clarification",
+      "status": "not_applicable",
+      "passed": null
+    },
+    {
+      "id": "T31",
+      "category": "clarification",
+      "expected": "clarification",
+      "status": "not_applicable",
+      "passed": null
+    },
+    {
+      "id": "T32",
+      "category": "unanswerable",
+      "expected": "unanswerable",
+      "status": "not_applicable",
+      "passed": null
+    },
+    {
+      "id": "T33",
+      "category": "unanswerable",
+      "expected": "unanswerable",
+      "status": "not_applicable",
+      "passed": null
+    },
+    {
+      "id": "T34",
+      "category": "unanswerable",
+      "expected": "unanswerable",
+      "status": "not_applicable",
+      "passed": null
+    },
+    {
+      "id": "T35",
+      "category": "unanswerable",
+      "expected": "unanswerable",
+      "status": "not_applicable",
+      "passed": null
+    },
+    {
+      "id": "T36",
+      "category": "recovery",
+      "expected": 1160.0,
+      "status": "tool_oracle_check",
+      "passed": true,
+      "observed": 1160
+    }
+  ],
+  "summary": {
+    "checked": 30,
+    "passed": 30,
+    "live_agent_success_rate": null
+  }
+}
