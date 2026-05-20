@@ -22,6 +22,15 @@ def test_aggregate_and_filter(analysis):
     assert analysis.filter("sales", "gt", 20)["matched_rows"] == 2
 
 
+@pytest.mark.parametrize("operation,expected", [("sum", 100), ("mean", 25), ("count", 4),
+                                              ("min", 10), ("max", 40), ("median", 25)])
+def test_aggregate_without_groups(analysis, operation, expected):
+    result = analysis.registry().execute("aggregate_data", {
+        "group_by": [], "column": "sales", "operation": operation})
+    assert result["ok"]
+    assert result["result"]["rows"] == [{"value": expected}]
+
+
 @pytest.mark.parametrize("query", [
     "DROP TABLE data", "DELETE FROM data", "UPDATE data SET sales=0",
     "ATTACH DATABASE 'private.db' AS private", "PRAGMA table_info(data)",

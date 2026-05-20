@@ -64,9 +64,14 @@ class Analysis:
         self.columns(group_by + [column], numeric=False)
         if operation != "count":
             self.columns([column], numeric=True)
-        grouped = self.frame.groupby(group_by, dropna=False, observed=True)[column]
-        values = grouped.sum(min_count=1) if operation == "sum" else grouped.agg(operation)
-        result = values.rename("value").reset_index()
+        if group_by:
+            grouped = self.frame.groupby(group_by, dropna=False, observed=True)[column]
+            values = grouped.sum(min_count=1) if operation == "sum" else grouped.agg(operation)
+            result = values.rename("value").reset_index()
+        else:
+            series = self.frame[column]
+            value = series.sum(min_count=1) if operation == "sum" else series.agg(operation)
+            result = pd.DataFrame({"value": [value]})
         return {"rows": records(result.head(100)), "groups": len(result),
                 "truncated": len(result) > 100, "operation": operation,
                 "missing_policy": "Missing group keys retained; missing metric values excluded. Count counts nonmissing values."}
@@ -177,8 +182,8 @@ class Analysis:
             "column": STRING, "operator": {"enum": ["eq", "ne", "gt", "ge", "lt", "le"]},
             "value": {"type": ["string", "number", "boolean"]},
             "limit": {"type": "integer", "minimum": 1, "maximum": 100}}, ["column", "operator", "value"]), self.filter)
-        registry.add("aggregate_data", "Group data; count means nonmissing count.", object_schema({
-            "group_by": STRINGS, "column": STRING,
+        registry.add("aggregate_data", "Aggregate data. Use group_by=[] for an overall total/statistic across all rows, or column names for groups. Count means nonmissing count.", object_schema({
+            "group_by": {**STRINGS, "minItems": 0}, "column": STRING,
             "operation": {"enum": ["sum", "mean", "count", "min", "max", "median"]}},
             ["group_by", "column", "operation"]), self.aggregate)
         registry.add("run_sql", "Read-only SQLite query, including JOINs across tables from inspect_dataset; max 100 returned rows.", object_schema({

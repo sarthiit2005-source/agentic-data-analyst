@@ -47,6 +47,17 @@ def test_unknown_evidence_rejected(tmp_path):
     assert run.status == "error_limit"
 
 
+def test_total_and_citation_format_recovery(tmp_path):
+    client = ScriptedClient([
+        call("aggregate_data", {"group_by": [], "column": "sales", "operation": "sum"}),
+        call("finish", {"report": "Total 30. Evidence: E1", "evidence_ids": ["E1"], "outcome": "answered"}),
+        call("finish", {"report": "Total 30 [E1].", "evidence_ids": ["E1"], "outcome": "answered"})])
+    run = Agent(client, registry(tmp_path)).run("Total sales?")
+    assert run.status == "answered" and run.errors == 1
+    assert "[E1]" in run.events[1]["error"]
+    assert "Retry finish" in run.events[1]["error"]
+
+
 def test_step_limit_no_fabricated_summary(tmp_path):
     client = ScriptedClient([call("inspect_dataset", {})] * 2)
     run = Agent(client, registry(tmp_path), max_steps=2).run("Analyze")

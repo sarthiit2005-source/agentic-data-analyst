@@ -1,1 +1,1 @@
-31 tests passed in 9.37s. Includes multiple CSVs, schema validation, joined charts, and scripted cross-table agent evidence. Live LLM evaluation remains pending.
+38 tests passed in 9.52s. Includes overall aggregation and citation-format recovery regressions. This is deterministic software testing, not a successful live rerun.

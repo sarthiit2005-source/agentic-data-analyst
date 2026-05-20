@@ -11,7 +11,7 @@ No scikit-learn dependency, training, fine-tuning or predictive modeling was add
 
 ## Evidence and current limitations
 
-The completed suite passed 31 tests, including schema validation, multiple CSVs,
+The completed suite passed 38 tests, including schema validation, multiple CSVs,
 joined charts and a scripted cross-table evidence flow; the verification record is in
 `evaluation/results/verification.txt`. The local health endpoint returned HTTP 200,
 and the sample sales-data view was inspected in a browser; its screenshot is

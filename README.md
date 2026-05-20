@@ -8,7 +8,7 @@ references. Uses a pretrained LLM API; no training, fine-tuning or predictive mo
 test suite and a 36-task benchmark. Live LLM evaluation and public deployment
 have not been performed. Offline results are not agent accuracy.
 
-Local verification: **31 tests passed**, **30/30 applicable offline tool checks
+Local verification: **38 tests passed**, **30/30 applicable offline tool checks
 passed**, and the app's health endpoint returned HTTP 200. The sample-data view
 was inspected in the browser.
 

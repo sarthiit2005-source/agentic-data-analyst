@@ -31,13 +31,19 @@ class Agent:
             if not set(evidence_ids).issubset(evidence) or not cited.issubset(evidence):
                 raise ValueError("Report references unknown or unsuccessful evidence.")
             if outcome == "answered" and (not cited or not cited.issubset(set(evidence_ids))):
-                raise ValueError("Answered reports need successful evidence citations and matching evidence_ids.")
+                example = next(iter(sorted(evidence)), "E1")
+                raise ValueError(
+                    f"Put bracketed citations inside report, e.g. 'The computed value is ... [{example}].', "
+                    f"and include '{example}' in evidence_ids. Bare 'Evidence: {example}' is not valid. "
+                    "Retry finish with corrected citations; do not repeat successful calculations."
+                )
             return {"report": report, "outcome": outcome, "evidence_ids": evidence_ids}
 
         # One registry per session; replace the finish closure on follow-up turns.
         self.registry.tools.pop("finish", None)
         self.registry.add("finish", "Submit final report or request clarification.", object_schema({
-            "report": {"type": "string", "minLength": 1, "maxLength": 12000},
+            "report": {"type": "string", "minLength": 1, "maxLength": 12000,
+                       "description": "Markdown report. Cite computed findings using bracketed IDs, e.g. 'Total: 1160 [E3].' Bare E3 is not a citation."},
             "evidence_ids": {"type": "array", "items": {"type": "string", "pattern": "^E[0-9]+$"},
                              "uniqueItems": True},
             "outcome": {"enum": ["answered", "clarification", "unanswerable"]}},
